@@ -57,6 +57,22 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/error', (req, res) => {
+    res.status(404).send({
+        error: 'Object not found'
+    });
+});
+
+app.get('/users', (req, res) => {
+    res.send([{
+        name: 'João',
+        age: 26
+    }, {
+        name: 'Zé',
+        age: 30
+    }]);
+});
+
 app.get('/about', (req, res) => {
     // res.send('About page');
     res.render('about.hbs', {
@@ -73,3 +89,6 @@ app.get('/projects', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is up on port ${port}`);
 });
+
+
+module.exports.app = app;
